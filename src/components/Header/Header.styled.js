@@ -78,6 +78,7 @@ export const LogoWrapper = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
+  outline: none;
 `
 
 export const Title = styled.h1`
@@ -109,6 +110,7 @@ export const StyledNavLink = styled(NavLink)`
   font-size: 14px;
   color: var(--text-color);
   text-decoration: none;
+  outline: none;
 
   @media screen and (min-width: 768px) {
     font-size: 16px;

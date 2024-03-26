@@ -26,6 +26,10 @@ export const Input = styled.input`
   &::placeholder {
     color: var(--text-color);
   }
+
+  &:focus  {
+    border-color: var(--hover-color);
+   } 
 `
 export const Form = styled.form`
 position: relative;
@@ -40,17 +44,15 @@ margin-left: auto;
   width: 340px;
 }
 
-&:hover ${SearchBtn},
-&:focus ${SearchBtn} {
+&:hover ${SearchBtn} {
     & > path {
      stroke: var(--hover-color);
  }
    }
 
-&:hover ${Input},
-&:focus ${Input} {
+&:hover ${Input}  {
     border-color: var(--hover-color);
-   }
+   } 
 `
 
 export const ErrorText = styled.p`
