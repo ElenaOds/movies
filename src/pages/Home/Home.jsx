@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getTrendingData } from '../../services/moviesApi';
 import Card from '../../components/Card/Card';
 
-import { Section } from './Home.styled'
+import { Section, List } from './Home.styled'
 
 const Home = () => {
   const [videos, setVideos] = useState([]);
@@ -24,11 +24,11 @@ const Home = () => {
   
   return (
     <Section>
-      <ul>
+      <List>
           {videos.map(video => {
             return <Card key={video.id} video={video}/>
       })}
-      </ul>
+      </List>
     
     </Section>
   )

@@ -3,6 +3,7 @@
 :root {
   --text-color: #fff;
   --hover-color: #FF6B08;
+  --secondary-text-color: #000;
   /* --bgd-header: linear-gradient(-45deg, #9925ea, #338aff, #9925ea);
   --title-color: -webkit-linear-gradient(#9925ea, #338aff, #9925ea);
   --text-header: #fff;
@@ -46,8 +47,9 @@ ol {
  list-style: none;
 }
 
-/* img {
- display: block;
+img {
+ /* display: block; */
  max-width: 100%;
  height: auto;
-} */
+ vertical-align: middle;
+}

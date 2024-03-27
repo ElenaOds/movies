@@ -18,6 +18,8 @@ const Header = () => {
       onClick={(e) => e.target.blur()}>Movies</StyledNavLink>
       <StyledNavLink to='/tv-shows' aria-label='tv-shows'
       onClick={(e) => e.target.blur()}>TV-shows</StyledNavLink>
+      <StyledNavLink to='/person' aria-label='person'
+      onClick={(e) => e.target.blur()}>Person</StyledNavLink>
       </Nav>
       </LinksWrapper>
       <SearchBar/>

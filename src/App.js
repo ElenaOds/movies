@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 const Home = lazy(() => import('./pages/Home/Home'));
 const Movies = lazy(() => import('./pages/Movies/Movies'));
 const TvShows = lazy(() => import('./pages/TvShows/TvShows'));
+const Person = lazy(() => import('./pages/Person/Person'));
 const MovieDetails = lazy(() => import('./pages/MovieDetails'));
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='home' element={<Home/>}/>
         <Route path='movies' element={<Movies/>}/>
         <Route path='tv-shows' element={<TvShows/>}/>
+        <Route path='person' element={<Person/>}/>
         <Route path='/:movieId' element={<MovieDetails/>}/>
       </Route>
     </Routes> 
