@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { getTrendingPerson } from '../../services/moviesApi';
+import { useLocation  } from "react-router-dom";
 import { Section, List } from './Person.styled';
 import PersonCard from '../../components/Card/PersonCard';
 
 const Person = () => {
+  const location = useLocation();
     const [persons, setPersons] = useState([]);
 
     useEffect(() => {
@@ -23,7 +25,7 @@ const Person = () => {
     <Section>
     <List>
         {persons.map(person => {
-          return <PersonCard key={person.id} person={person}/>
+          return <PersonCard key={person.id} person={person} state={{from: location}}/>
     })}
     </List>
   

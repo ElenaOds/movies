@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { useLocation  } from "react-router-dom";
 import { getTrendingData } from '../../services/moviesApi';
 import Card from '../../components/Card/Card';
 
 import { Section, List } from './Home.styled'
 
 const Home = () => {
+  const location = useLocation();
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -12,7 +14,6 @@ const Home = () => {
       try {
         const { results } = await getTrendingData();
         setVideos([...results]);
-        console.log(results)
       } catch (error) {
         console.error(error);
       }
@@ -20,13 +21,14 @@ const Home = () => {
     fetchData();
   }, []);
 
-   
-  
+
+
+ 
   return (
     <Section>
       <List>
           {videos.map(video => {
-            return <Card key={video.id} video={video}/>
+            return <Card key={video.id} video={video} state={{from: location}}/>
       })}
       </List>
     

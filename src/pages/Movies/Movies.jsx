@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useLocation  } from "react-router-dom";
 import { getTrendingMovies } from '../../services/moviesApi';
 import { Section, List } from './Movies.styled';
 import Card from '../../components/Card/Card';
 
 const Movies = () => {
+  const location = useLocation();
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -11,7 +13,6 @@ const Movies = () => {
       try {
         const { results } = await getTrendingMovies();
         setVideos([...results]);
-        console.log(results)
       } catch (error) {
         console.error(error);
       }
@@ -23,7 +24,7 @@ const Movies = () => {
     <Section>
       <List>
           {videos.map(video => {
-            return <Card key={video.id} video={video}/>
+            return <Card key={video.id} video={video} state={{from: location}}/>
       })}
       </List>
     

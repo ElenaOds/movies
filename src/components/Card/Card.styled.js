@@ -1,31 +1,35 @@
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
-
+export const StyledLink = styled(Link)`
+   text-decoration: none;
+   display: flex;
+    flex-direction: column;
+`
 
 export const StyledCard = styled.li`
-display: flex;
-flex-direction: column;
 width: 100%;
-overflow: hidden;
+margin-bottom: 20px;
 box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
         0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2);
 
 
-@media (min-width: 320px) {
-    width: 80%;
-  }
+    @media (min-width: 480px) {
+        width: calc((100% - 4 * 10px) / 2);
+        margin: 10px;
+    }
 
     @media (min-width: 640px) {
-        width: 48%;
+        width: calc((100% - 6 * 10px) / 3);
       }
       
       @media (min-width: 768px) {
-        width: 31%;
+        width: calc((100% - 8 * 10px) / 4);
       }
 
       @media (min-width: 1280px) {
-        width: 23.7%;
+        width: calc((100% - 10 * 10px) / 5);
       }
 `
 
