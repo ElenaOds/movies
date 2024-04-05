@@ -13,7 +13,7 @@ const Person = () => {
         try {
           const { results } = await getTrendingPerson();
           setPersons([...results]);
-          console.log(results)
+          // console.log(results)
         } catch (error) {
           console.error(error);
         }

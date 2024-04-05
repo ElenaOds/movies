@@ -13,7 +13,7 @@ const TvShows = () => {
       try {
         const { results } = await getTrendingShows();
         setVideos([...results]);
-        console.log(results)
+        // console.log(results)
       } catch (error) {
         console.error(error);
       }

@@ -66,3 +66,54 @@ const moviesApi = axios.create({
     return data;
   };
   
+  export const getMovie = async movieId => {
+    const { data } = await moviesApi.get(`movie/${movieId}`, {
+      params: {
+        api_key: KEY,
+        language: 'en-US',
+      },
+    });
+    return data;
+  };
+
+  export const getCredits = async movieId => {
+    const { data } = await moviesApi.get(`movie/${movieId}/credits`, {
+      params: {
+        api_key: KEY,
+        language: 'en-US',
+      },
+    });
+    return data;
+  };
+
+  export const getReviews = async movieId => {
+    const { data } = await moviesApi.get(`movie/${movieId}/reviews`, {
+      params: {
+        api_key: KEY,
+        language: 'en-US',
+        page: 1,
+      },
+    });
+    return data;
+  };
+
+  export const getRecommendedMovies = async movieId => {
+    const { data } = await moviesApi.get(`movie/${movieId}/recommendations`, {
+      params: {
+        api_key: KEY,
+        language: 'en-US',
+        page: 1,
+      },
+    });
+    return data;
+  };
+
+  export const getImages = async movieId => {
+    const { data } = await moviesApi.get(`movie/${movieId}/images`, {
+      params: {
+        api_key: KEY,
+        language: 'en-US',
+      },
+    });
+    return data;
+  };
