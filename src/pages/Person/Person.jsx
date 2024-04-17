@@ -2,18 +2,18 @@ import { useEffect, useState } from 'react'
 import { getTrendingPerson } from '../../services/moviesApi';
 import { useLocation  } from "react-router-dom";
 import { Section, List } from './Person.styled';
-import PersonCard from '../../components/Card/PersonCard';
+import Card from '../../components/Card/Card';
 
 const Person = () => {
   const location = useLocation();
-    const [persons, setPersons] = useState([]);
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
       const fetchData = async () => {
         try {
           const { results } = await getTrendingPerson();
-          setPersons([...results]);
-          // console.log(results)
+          setItems([...results]);
+          console.log(results)
         } catch (error) {
           console.error(error);
         }
@@ -24,8 +24,8 @@ const Person = () => {
   return (
     <Section>
     <List>
-        {persons.map(person => {
-          return <PersonCard key={person.id} person={person} state={{from: location}}/>
+        {items.map(item => {
+          return <Card key={item.id} item={item} state={{from: location}}/>
     })}
     </List>
   

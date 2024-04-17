@@ -1,45 +1,29 @@
 import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import { useState, useEffect, Suspense } from 'react';
 import { getMovie } from '../../services/moviesApi';
+import { Section } from './MovieDetails.styled.js';
+import LinkBack from "../../components/LinkBack/LinkBack.jsx";
+import ItemDetails from "../../components/ItemDetails/ItemDetails.jsx";
 
-import noimage from '../../assets/imgs/Noimage.jpg';
 
 const MovieDetails = () => {
-    const [movie, setMovie] = useState(null);
+    const [item, setItem] = useState(null);
     const { movieId } = useParams();
     const location = useLocation();
 
-
     useEffect(() => {
-      getMovie(movieId).then(setMovie);
+      getMovie(movieId).then(setItem);
   }, [movieId]);
 
-  if (!movie) 
+  if (!item) 
   return null;
 
-  const getYear = () => new Date(movie.release_date).getFullYear();
-  const getScore = () => (Math.round(movie.vote_average * 10) + '%');
-  const getGenre = () => (movie.genres.map(({ name }) => name).join(', '));
-
-
-  const { poster_path, title, overview } = movie;
   const backLinkHref = location.state?.from ?? "/movies";
 
-
   return (
-    <section>
-       <Link to={backLinkHref}>
-        Go back</Link>
-    
-      <img
-      src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}` : noimage}
-      alt={title}
-      />
-      <p>{title}</p>
-      <p>Release date: {getYear()}</p>
-      <p>Votes: {getScore()}</p>
-      <p>Genres: {getGenre()}</p>
-      <p>Overview {overview}</p>
+    <Section>
+      <LinkBack backLinkHref={backLinkHref}/>
+      <ItemDetails item={item}/>
 
       <p>Additional information</p> 
             <ul>
@@ -52,7 +36,7 @@ const MovieDetails = () => {
             <Outlet />
             </Suspense>
             
-    </section>
+    </Section>
 
 
   )

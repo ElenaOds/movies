@@ -6,13 +6,13 @@ import Card from '../../components/Card/Card';
 
 const TvShows = () => {
   const location = useLocation();
-  const [videos, setVideos] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { results } = await getTrendingShows();
-        setVideos([...results]);
+        setItems([...results]);
         // console.log(results)
       } catch (error) {
         console.error(error);
@@ -23,8 +23,8 @@ const TvShows = () => {
   return (
     <Section>
     <List>
-        {videos.map(video => {
-          return <Card key={video.id} video={video} state={{from: location}}/>
+        {items.map(item => {
+          return <Card key={item.id} item={item} state={{from: location}}/>
     })}
     </List>
   

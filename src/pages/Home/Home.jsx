@@ -7,13 +7,13 @@ import { Section, List } from './Home.styled'
 
 const Home = () => {
   const location = useLocation();
-  const [videos, setVideos] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { results } = await getTrendingData();
-        setVideos([...results]);
+        setItems([...results]);
       } catch (error) {
         console.error(error);
       }
@@ -27,8 +27,8 @@ const Home = () => {
   return (
     <Section>
       <List>
-          {videos.map(video => {
-            return <Card key={video.id} video={video} state={{from: location}}/>
+          {items.map(item => {
+            return <Card key={item.id} item={item} state={{from: location}}/>
       })}
       </List>
     
