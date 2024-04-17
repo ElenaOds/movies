@@ -1,6 +1,5 @@
 import noimage from '../../assets/imgs/Noimage.jpg';
 
-
 import { StyledCard, StyledLink, CardTitle, CardInfoWrapper, CardText, Img, CardWrapper } from './Card.styled';
 
 const Card = ({item, state}) => {

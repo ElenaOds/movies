@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { getCredits } from '../../services/moviesApi';
 
-import noImage from '../../assets/imgs/Noimage.jpg'
+import noImage from '../../assets/imgs/Noimage.jpg';
+import { StyledLink } from './Cast.styled';
 
 const Cast = () => {
   const [ cast, setCast ] = useState([]);
@@ -25,9 +26,10 @@ const Cast = () => {
    
 
   return (
-    <div>
+    <ul>
       {cast.map(({id, profile_path, name, character}) => {
         return (
+          <StyledLink to={`/person/${id}`}>
           <li key={id}>
             <img
              src={profile_path ? `https://image.tmdb.org/t/p/w500${profile_path}` : noImage}
@@ -35,9 +37,10 @@ const Cast = () => {
             <p>Name: {name}</p>
             <p>Character: {character}</p>
           </li>
+          </StyledLink>
       )
       })}
-    </div>
+    </ul>
   )
 }
 

@@ -27,11 +27,9 @@ export const StyledLink = styled(Link)`
     margin-bottom: 20px;
   }
 
-
-
-
    &:hover,
    &:focus {
     background-position: 150% 50%;
+    outline: none;
    }
 `
