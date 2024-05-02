@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 
 export const StyledLink = styled(Link)`
    text-decoration: none;
-   display: flex;
-    flex-direction: column;
-`
+`;
 
 export const StyledCard = styled.li`
 width: 100%;
@@ -31,18 +29,25 @@ box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
       @media (min-width: 1280px) {
         width: calc((100% - 10 * 10px) / 5);
       }
-`
+`;
+
+export const GeneralWrapper = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+`;
 
 const text = `
     font-weight: 500;
     font-size: 12px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
     `
 
     export const CardTitle = styled.p`
     ${text}
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: var(--secondary-text-color);
     margin-bottom: 4px;
 
@@ -51,9 +56,6 @@ const text = `
     }
 `;
 
-export const Img = styled.img`
-    height: 100%;
-`
 
 export const CardInfoWrapper = styled.div`
     display: flex;

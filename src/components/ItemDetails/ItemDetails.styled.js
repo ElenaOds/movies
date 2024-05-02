@@ -2,14 +2,12 @@ import styled from 'styled-components';
 
 const text = `
     font-weight: 500;
-    font-size: 12px;
-    line-height: 1.2;
-    letter-spacing: 0.02em;
+    font-size: 14px;
     color: var(--secondary-text-color);
 
-    @media (min-width: 768px) {
-        font-size: 14px;
-    }
+    // @media (min-width: 768px) {
+    //     font-size: 14px;
+    // }
 
     @media (min-width: 1280px) {
         font-size: 16px;

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { getCredits } from '../../services/moviesApi';
+import AdditionalInfo from '../AdditionalInfo/AdditionalInfo';
 
-import noImage from '../../assets/imgs/Noimage.jpg';
-import { StyledLink } from './Cast.styled';
+import { List } from './Cast.styled';
 
 const Cast = () => {
   const [ cast, setCast ] = useState([]);
@@ -19,29 +19,20 @@ const Cast = () => {
         console.error(error);
       }
     };
+  
     fetchData();
   }, [movieId]);
 
-   
-   
 
   return (
-    <ul>
-      {cast.map(({id, profile_path, name, character}) => {
+    <List>
+      {cast.map((item) => {
         return (
-          <StyledLink to={`/person/${id}`}>
-          <li key={id}>
-            <img
-             src={profile_path ? `https://image.tmdb.org/t/p/w500${profile_path}` : noImage}
-             alt={name}/>
-            <p>Name: {name}</p>
-            <p>Character: {character}</p>
-          </li>
-          </StyledLink>
+          <AdditionalInfo key={item.id} item={item}/>    
       )
       })}
-    </ul>
+    </List>
   )
 }
 
-export default Cast
+export default Cast;

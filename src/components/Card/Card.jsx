@@ -1,6 +1,6 @@
 import noimage from '../../assets/imgs/Noimage.jpg';
 
-import { StyledCard, StyledLink, CardTitle, CardInfoWrapper, CardText, Img, CardWrapper } from './Card.styled';
+import { StyledCard, StyledLink, CardTitle, CardInfoWrapper, CardText, CardWrapper, GeneralWrapper } from './Card.styled';
 
 const Card = ({item, state}) => {
     const {media_type, poster_path, name, title, release_date, id, first_air_date, profile_path, known_for_department } = item;
@@ -13,7 +13,8 @@ const Card = ({item, state}) => {
                 media_type === "tv" ? `/tv/${id}` :
                 media_type === "person" ? `/person/${id}` : null} 
             key={id} id={id} state={state}>
-        <Img
+        <GeneralWrapper>
+        <img
             src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}` : 
                 profile_path ? `https://image.tmdb.org/t/p/w300${profile_path}` : noimage}
             alt={media_type === "movie" ? title : name}
@@ -28,6 +29,7 @@ const Card = ({item, state}) => {
                     media_type === "tv" ?  'TV-Show' : null}</CardText> 
         </CardInfoWrapper>
         </CardWrapper>
+        </GeneralWrapper>
         </StyledLink>
     </StyledCard>
   )

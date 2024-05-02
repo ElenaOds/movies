@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { getRecommendedMovies } from '../../services/moviesApi';
+import AdditionalInfo from '../AdditionalInfo/AdditionalInfo';
+import { List } from './Recommendation.styled';
 
-import noimage from '../../assets/imgs/Noimage.jpg';
 
 const Recommendation = () => {
   const [ movies, setMovies ] = useState([]);
@@ -26,27 +27,28 @@ const Recommendation = () => {
   }
 
   return (
-    <ul>
-      {movies?.map(({id, poster_path, title, release_date, first_air_date, media_type  }) => {
+    <List>
+      {movies?.map((item) => {
         return (
-          <li key={id}>
-            <Link to={`/movies/${id}`} state={{from: location}}>
-        <img
-            src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}` : noimage}
-            alt={title}
-        /> 
-        <div>
-        <p>{title.toUpperCase()}</p>
-        <div>
-        <p>{media_type === "movie" ? new Date(release_date).getFullYear() : new Date(first_air_date).getFullYear()}</p> 
-        <p>{media_type === "movie" ? media_type.charAt(0).toUpperCase() + media_type.slice(1) : media_type.toUpperCase()}</p> 
-        </div>
-        </div>
-        </Link>
-          </li>
+          <AdditionalInfo key={item.id} item={item} state={{from: location}}/>
+        //   <li key={id}>
+        //     <Link to={`/movies/${id}`} state={{from: location}}>
+        // <img
+        //     src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}` : noimage}
+        //     alt={title}
+        // /> 
+        // <div>
+        // <p>{title.toUpperCase()}</p>
+        // <div>
+        // <p>{media_type === "movie" ? new Date(release_date).getFullYear() : new Date(first_air_date).getFullYear()}</p> 
+        // <p>{media_type === "movie" ? media_type.charAt(0).toUpperCase() + media_type.slice(1) : media_type.toUpperCase()}</p> 
+        // </div>
+        // </div>
+        // </Link>
+        //   </li>
         )
       })}
-    </ul>
+    </List>
   )
 }
 
