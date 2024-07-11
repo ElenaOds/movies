@@ -7,13 +7,13 @@ import Loader from '../../components/Loader/Loader';
 
 const Layout = () => {
   return (
-    <>
+    <div>
     <Header/>
     <Suspense fallback={<Loader/>}>
       <Outlet/>
     </Suspense>
     <Footer/>
-    </>
+    </div>
   )
 }
 

@@ -7,7 +7,9 @@ const {id, profile_path, name, character, poster_path, title, release_date, firs
   return (
     <StyledCard key={id}>
         <StyledLink to={
-            media_type === "movie" ? `/movies/${id}` : `/person/${id}`}
+            media_type === "movie" ? `/movies/${id}` : 
+            media_type === "tv" ? `/tv-shows/${id}` :
+            media_type === "person" ? `/person/${id}` : null} 
             id={id} state={state}>
           <img
            src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}` : 

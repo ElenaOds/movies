@@ -13,7 +13,6 @@ const TvShows = () => {
       try {
         const { results } = await getTrendingShows();
         setItems([...results]);
-        // console.log(results)
       } catch (error) {
         console.error(error);
       }

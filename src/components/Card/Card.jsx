@@ -10,7 +10,7 @@ const Card = ({item, state}) => {
     <StyledCard key={id}>
         <StyledLink to={
                 media_type === "movie" ? `/movies/${id}` : 
-                media_type === "tv" ? `/tv/${id}` :
+                media_type === "tv" ? `/tv-shows/${id}` :
                 media_type === "person" ? `/person/${id}` : null} 
             key={id} id={id} state={state}>
         <GeneralWrapper>

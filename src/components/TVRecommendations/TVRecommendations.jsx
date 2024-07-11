@@ -1,34 +1,33 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from "react-router-dom";
-import { getRecommendedMovies } from '../../services/moviesApi';
+import { getTVRecommendedMovies } from '../../services/moviesApi';
 import AdditionalInfo from '../AdditionalInfo/AdditionalInfo';
-import { List } from './Recommendation.styled';
+import { List } from './TVRecommendations.syled';
 
-
-const Recommendation = () => {
-  const [ movies, setMovies ] = useState([]);
-  const { movieId } = useParams();
+const TVRecommendations = () => {
+  const [ items, setItems ] = useState([]);
+  const { seriesId } = useParams();
   const location = useLocation();
 
   useEffect(() => {
     const fetchData = async() => {
       try {
-        const { results } = await getRecommendedMovies(movieId);
-        setMovies([...results]);
+        const { results } = await getTVRecommendedMovies(seriesId);
+        setItems([...results]);
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, [movieId]);
+  }, [seriesId]);
 
-  if (movies.length === 0) {
-    return <p>There are no recommended movies</p>;
+  if (items.length === 0) {
+    return <p>There are no recommended tv-shows</p>;
   }
 
   return (
     <List>
-      {movies?.map((item) => {
+      {items?.map((item) => {
         return (
           <AdditionalInfo key={item.id} item={item} state={{from: location}}/>
         )
@@ -37,4 +36,4 @@ const Recommendation = () => {
   )
 }
 
-export default Recommendation
+export default TVRecommendations;

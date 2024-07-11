@@ -108,11 +108,44 @@ const moviesApi = axios.create({
     return data;
   };
 
-  export const getImages = async movieId => {
-    const { data } = await moviesApi.get(`movie/${movieId}/images`, {
+
+  export const getShow = async seriesId => {
+    const { data } = await moviesApi.get(`tv/${seriesId}`, {
       params: {
         api_key: KEY,
         language: 'en-US',
+      },
+    });
+    return data;
+  };
+
+  export const getTVCast = async seriesId => {
+    const { data } = await moviesApi.get(`tv/${seriesId}/credits`, {
+      params: {
+        api_key: KEY,
+        language: 'en-US',
+      },
+    });
+    return data;
+  };
+
+  export const getTVReviews = async seriesId => {
+    const { data } = await moviesApi.get(`tv/${seriesId}/reviews`, {
+      params: {
+        api_key: KEY,
+        language: 'en-US',
+        page: 1,
+      },
+    });
+    return data;
+  };
+
+  export const getTVRecommendedMovies = async seriesId => {
+    const { data } = await moviesApi.get(`tv/${seriesId}/recommendations`, {
+      params: {
+        api_key: KEY,
+        language: 'en-US',
+        page: 1,
       },
     });
     return data;
